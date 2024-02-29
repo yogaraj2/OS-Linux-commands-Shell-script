@@ -70,6 +70,7 @@ cmp file1 file2
 ## OUTPUT
 
  file1 file2 differ: byte 1, line 1
+ 
 
 comm file1 file2
  ## OUTPUT
@@ -85,6 +86,7 @@ chanchal singhvi
 	lalit chowdury
         
 		s.n. dasgupta
+
  
 diff file1 file2
 ## OUTPUT
@@ -135,7 +137,7 @@ Thi
 cut -d "|" -f 1 file22
 ## OUTPUT
 
-001 
+1001 
 
 1002 
 
@@ -893,8 +895,10 @@ grep: /etc/alternatives/gdm-theme.gresource: binary file matches
 
 grep: /etc/alternatives/nc: binary file matches
 
+
 grep -w -n world newfile   
 ## OUTPUT
+
 1:Hello world
 2:hello world
 
