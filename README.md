@@ -42,24 +42,44 @@ s.n. dasgupta
 ### Display the content of the files
 cat < file1
 ## OUTPUT
-
+chanchal singhvi
+c.k. shukla
+s.n. dasgupta
+sumit chakrobarty
 
 
 cat < file2
 ## OUTPUT
-
+anil aggarwal
+barun sengupta
+c.k. shukla
+lalit chowdury
+s.n. dasgupta
 
 # Comparing Files
 cmp file1 file2
 ## OUTPUT
- 
+ file1 file2 differ: byte 1, line 1
 comm file1 file2
  ## OUTPUT
-
+       anil aggarwal
+        barun sengupta
+chanchal singhvi
+                c.k. shukla
+        lalit chowdury
+                s.n. dasgupta
  
 diff file1 file2
 ## OUTPUT
-
+1c1,2
+< chanchal singhvi
+---
+> anil aggarwal
+> barun sengupta
+2a4
+> lalit chowdury
+4d5
+< sumit chakrobarty
 
 #Filters
 
@@ -82,18 +102,21 @@ cat > file22
 
 cut -c1-3 file11
 ## OUTPUT
-
-
+Hel
+Thi
 
 
 cut -d "|" -f 1 file22
 ## OUTPUT
-
-
+001 
+1002 
+1003 
 
 cut -d "|" -f 2 file22
 ## OUTPUT
-
+ Ram 
+ tom 
+ Joe 
 
 cat < newfile 
 ```
@@ -107,40 +130,384 @@ hello world
  
 grep Hello newfile 
 ## OUTPUT
-
-
+Hello world
 
 grep hello newfile 
 ## OUTPUT
-
+hello world
 
 
 
 grep -v hello newfile 
 ## OUTPUT
-
+Hello world
+hello world
 
 
 cat newfile | grep -i "hello"
 ## OUTPUT
 
-
-
+Hello world
+hello world
 
 cat newfile | grep -i -c "hello"
 ## OUTPUT
-
-
+2
 
 
 grep -R ubuntu /etc
 ## OUTPUT
-
+/etc/apparmor.d/abstractions/ubuntu-email:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-email:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-email:  include if exists <abstractions/ubuntu-email.d>
+/etc/apparmor.d/abstractions/ubuntu-feed-readers:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-feed-readers:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-feed-readers:  include if exists <abstractions/ubuntu-feed-readers.d>
+/etc/apparmor.d/abstractions/ubuntu-bittorrent-clients:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-bittorrent-clients:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-bittorrent-clients:  include if exists <abstractions/ubuntu-bittorrent-clients.d>
+/etc/apparmor.d/abstractions/ubuntu-xterm:  include if exists <abstractions/ubuntu-xterm.d>
+/etc/apparmor.d/abstractions/ubuntu-browsers:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-browsers:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/gvfs-open:#   # needed for ubuntu-* abstractions
+/etc/apparmor.d/abstractions/gvfs-open:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/gvfs-open:#   include <abstractions/ubuntu-browsers>
+/etc/apparmor.d/abstractions/gvfs-open:#   include <abstractions/ubuntu-email>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/productivity:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/productivity:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/mailto:  include <abstractions/ubuntu-email>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/mailto:  include <abstractions/ubuntu-console-email>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/mailto:  include <abstractions/ubuntu-gnome-terminal>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/multimedia:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/multimedia:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/multimedia:  include <abstractions/ubuntu-media-players>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/multimedia:  include <abstractions/ubuntu-bittorrent-clients>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/multimedia:  include <abstractions/ubuntu-feed-readers>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/plugins-common:  # Since all the ubuntu-browsers.d abstractions need this, just include it
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/plugins-common:  include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/chromium-browser:include <abstractions/ubuntu-browsers.d/plugins-common>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/chromium-browser:include <abstractions/ubuntu-browsers.d/mailto>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/chromium-browser:include <abstractions/ubuntu-browsers.d/multimedia>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/chromium-browser:include <abstractions/ubuntu-browsers.d/productivity>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/chromium-browser:include <abstractions/ubuntu-browsers.d/java>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/chromium-browser:include <abstractions/ubuntu-browsers.d/kde>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/chromium-browser:include <abstractions/ubuntu-browsers.d/text-editors>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/chromium-browser:include <abstractions/ubuntu-browsers.d/ubuntu-integration>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/chromium-browser:include <abstractions/ubuntu-browsers.d/user-files>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/text-editors:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/text-editors:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/ubuntu-integration:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/ubuntu-integration:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/ubuntu-integration:  # Kubuntu
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/kde:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/kde:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-konsole:  include if exists <abstractions/ubuntu-konsole.d>
+/etc/apparmor.d/abstractions/ubuntu-unity7-base:  include if exists <abstractions/ubuntu-unity7-base.d>
+/etc/apparmor.d/abstractions/gio-open:#   # needed for ubuntu-* abstractions
+/etc/apparmor.d/abstractions/gio-open:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/gio-open:#   include <abstractions/ubuntu-browsers>
+/etc/apparmor.d/abstractions/gio-open:#   include <abstractions/ubuntu-email>
+/etc/apparmor.d/abstractions/ubuntu-unity7-launcher:  include if exists <abstractions/ubuntu-unity7-launcher.d>
+/etc/apparmor.d/abstractions/ubuntu-unity7-messaging:  include if exists <abstractions/ubuntu-unity7-messaging.d>
+/etc/apparmor.d/abstractions/ubuntu-console-browsers:# include <abstractions/ubuntu-gnome-terminal>
+/etc/apparmor.d/abstractions/ubuntu-console-browsers:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-console-browsers:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-console-browsers:  include if exists <abstractions/ubuntu-console-browsers.d>
+/etc/apparmor.d/abstractions/ubuntu-media-players:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-media-players:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-media-players:  include if exists <abstractions/ubuntu-media-players.d>
+/etc/apparmor.d/abstractions/ubuntu-gnome-terminal:  include if exists <abstractions/ubuntu-gnome-terminal.d>
+/etc/apparmor.d/abstractions/evince:  #include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/evince:  # Lubuntu
+/etc/apparmor.d/abstractions/evince:  /etc/xdg/lubuntu/applications/defaults.list r,
+/etc/apparmor.d/abstractions/exo-open:#   # needed for ubuntu-* abstractions
+/etc/apparmor.d/abstractions/exo-open:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/exo-open:#   include <abstractions/ubuntu-browsers>
+/etc/apparmor.d/abstractions/exo-open:#   include <abstractions/ubuntu-email>
+/etc/apparmor.d/abstractions/exo-open:  /usr/share/{xfce{,4},xubuntu}/applications/{,*.list} r,
+/etc/apparmor.d/abstractions/ubuntu-console-email:# include <abstractions/ubuntu-gnome-terminal>
+/etc/apparmor.d/abstractions/ubuntu-console-email:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-console-email:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-console-email:  include if exists <abstractions/ubuntu-console-email.d>
+/etc/apparmor.d/abstractions/xdg-open:#   # needed for ubuntu-* abstractions
+/etc/apparmor.d/abstractions/xdg-open:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/xdg-open:#   include <abstractions/ubuntu-browsers>
+/etc/apparmor.d/abstractions/xdg-open:#   include <abstractions/ubuntu-email>
+/etc/apparmor.d/abstractions/kde:/usr/share/kubuntu-default-settings/kf5-settings/* r,
+/etc/apparmor.d/abstractions/kde-open5:#   # needed for ubuntu-* abstractions
+/etc/apparmor.d/abstractions/kde-open5:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/kde-open5:#   include <abstractions/ubuntu-browsers>
+/etc/apparmor.d/abstractions/kde-open5:#   include <abstractions/ubuntu-email>
+/etc/apparmor.d/abstractions/kde-open5:  # see: https://lists.ubuntu.com/archives/apparmor/2019-January/011925.html
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-browsers>
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-console-browsers>
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-email>
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-console-email>
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-media-players>
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-gnome-terminal>
+/etc/apparmor.d/usr.bin.evince:  ##include <abstractions/ubuntu-xterm>
+/etc/apparmor.d/usr.bin.evince:  ##include <abstractions/ubuntu-konsole>
+/etc/apparmor.d/usr.bin.evince:  # For Xubuntu to launch the browser
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-browsers>
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-console-browsers>
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-email>
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-console-email>
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-media-players>
+/etc/apparmor.d/usr.bin.evince:  #include <abstractions/ubuntu-gnome-terminal>
+/etc/apparmor.d/usr.bin.evince:  ##include <abstractions/ubuntu-xterm>
+/etc/apparmor.d/usr.sbin.cupsd:# Author: Martin Pitt <martin.pitt@ubuntu.com>
+grep: /etc/shadow-: Permission denied
+/etc/rc1.d/K01whoopsie:DAEMON=/bin/sh -c 'export CRASH_DB_URL=https://daisy.ubuntu.com; exec whoopsie -f'
+grep: /etc/ppp/chap-secrets: Permission denied
+grep: /etc/ppp/pap-secrets: Permission denied
+/etc/speech-dispatcher/speechd.conf:# Copyright (C) 2014-2016 Luke Yelavich <themuso@ubuntu.com>
+/etc/speech-dispatcher/modules/espeak-ng-mbrola-generic.conf:# Copyright (C) 2014 Luke Yelavich <themuso@ubuntu.com>
+/etc/speech-dispatcher/modules/espeak-mbrola-generic.conf:# Copyright (C) 2014 Luke Yelavich <themuso@ubuntu.com>
+grep: /etc/ssl/private: Permission denied
+/etc/grub.d/10_linux:ubuntu_recovery="1"
+/etc/grub.d/10_linux:    Ubuntu|Kubuntu)
+/etc/grub.d/10_linux:if [ "$ubuntu_recovery" = 1 ]; then
+/etc/grub.d/10_linux:  if ([ "$ubuntu_recovery" = 0 ] || [ x$type != xrecovery ]) && \
+/etc/grub.d/10_linux_zfs:ubuntu_recovery="1"
+/etc/grub.d/10_linux_zfs:        # on ubuntu, loaded by the shim.
+/etc/grub.d/10_linux_zfs:    last_booted_kernel=$(zfs get -H com.ubuntu.zsys:last-booted-kernel "${dataset}" | awk -v FS='\t' '{print $3}')
+/etc/grub.d/10_linux_zfs:            last_used=$(zfs get -H com.ubuntu.zsys:last-used "${dataset}" | awk '{print $3}')
+/etc/grub.d/10_linux_zfs:    is_zsys=$(zfs get -H com.ubuntu.zsys:bootfs "${base_dataset}" | awk '{print $3}')
+/etc/grub.d/10_linux_zfs:    if ([ "${ubuntu_recovery}" = 0 ] || [ "${type}" != "recovery" ]) && \
+/etc/grub.d/10_linux_zfs:            Ubuntu|Kubuntu)
+/etc/grub.d/10_linux_zfs:    if [ "${ubuntu_recovery}" = 1 ]; then
+/etc/grub.d/10_linux_zfs:       # $1: root dataset (eg rpool/ROOT/ubuntu_2zhm07@autozsys_k56fr6)
+/etc/grub.d/10_linux_zfs:       # $3: initrd (eg /BOOT/ubuntu_2zhm07@autozsys_k56fr6/initrd.img-5.4.0-21-generic)
+/etc/grub.d/10_linux_zfs:       # $4: kernel (eg /BOOT/ubuntu_2zhm07@autozsys_k56fr6/vmlinuz-5.4.0-21-generic)
+/etc/grub.d/05_debian_theme:            Tanglu|Ubuntu|Kubuntu)
+/etc/grub.d/05_debian_theme:    Ubuntu|Kubuntu)
+grep: /etc/gshadow: Permission denied
+/etc/init.d/whoopsie:DAEMON=/bin/sh -c 'export CRASH_DB_URL=https://daisy.ubuntu.com; exec whoopsie -f'
+/etc/init.d/apparmor:#  Kees Cook <kees@ubuntu.com>
+/etc/init.d/acpid:        MODULES="$(sed -rn 's#^(/lib/modules/[^/]+/)?kernel/(drivers|ubuntu)/acpi/([^/]+/)*(.*)\.ko:.*#\4#p' "/lib/modules/$(uname -r)/modules.dep")"
+/etc/rcS.d/S01apparmor:#  Kees Cook <kees@ubuntu.com>
+/etc/rc2.d/S01acpid:        MODULES="$(sed -rn 's#^(/lib/modules/[^/]+/)?kernel/(drivers|ubuntu)/acpi/([^/]+/)*(.*)\.ko:.*#\4#p' "/lib/modules/$(uname -r)/modules.dep")"
+/etc/rc2.d/S01whoopsie:DAEMON=/bin/sh -c 'export CRASH_DB_URL=https://daisy.ubuntu.com; exec whoopsie -f'
+/etc/init/whoopsie.conf:env CRASH_DB_URL=https://daisy.ubuntu.com
+/etc/apport/crashdb.conf:default = 'ubuntu'
+/etc/apport/crashdb.conf:        dcd = open('/var/lib/ubuntu_dist_channel').read()
+/etc/apport/crashdb.conf:    'ubuntu': {
+/etc/apport/crashdb.conf:        'bug_pattern_url': 'http://people.canonical.com/~ubuntu-archive/bugpatterns/bugpatterns.xml',
+/etc/apport/crashdb.conf:        'dupdb_url': 'http://people.canonical.com/~ubuntu-archive/apport-duplicates',
+/etc/apport/crashdb.conf:        'distro': 'ubuntu',
+/etc/apport/crashdb.conf:        'bug_pattern_url': 'http://people.canonical.com/~ubuntu-archive/bugpatterns/bugpatterns.xml',
+/etc/apport/native-origins.d/thunderbird:LP-PPA-ubuntu-mozilla-daily
+/etc/apport/native-origins.d/thunderbird:LP-PPA-ubuntu-mozilla-daily-thunderbird-aurora
+grep: /etc/security/opasswd: Permission denied
+grep: /etc/sudoers: Permission denied
+/etc/u-d-c-nvidia-runtimepm-override:# File created by ubuntu-drivers
+/etc/rc3.d/S01acpid:        MODULES="$(sed -rn 's#^(/lib/modules/[^/]+/)?kernel/(drivers|ubuntu)/acpi/([^/]+/)*(.*)\.ko:.*#\4#p' "/lib/modules/$(uname -r)/modules.dep")"
+/etc/rc3.d/S01whoopsie:DAEMON=/bin/sh -c 'export CRASH_DB_URL=https://daisy.ubuntu.com; exec whoopsie -f'
+/etc/bash_completion.d/apport_completion:# apport-bug ubuntu-bug completion
+/etc/bash_completion.d/apport_completion:    ubuntu-bug | apport-bug)
+/etc/bash_completion.d/apport_completion:complete -F _apport-bug -o filenames -o dirnames ubuntu-bug
+/etc/PackageKit/Vendor.conf:DefaultUrl=https://help.ubuntu.com/community/Repositories/
+/etc/dbus-1/system.d/com.ubuntu.LanguageSelector.conf:                <allow own="com.ubuntu.LanguageSelector"/>
+/etc/dbus-1/system.d/com.ubuntu.LanguageSelector.conf:          <allow send_destination="com.ubuntu.LanguageSelector"
+/etc/dbus-1/system.d/com.ubuntu.LanguageSelector.conf:                 send_interface="com.ubuntu.LanguageSelector"/>
+/etc/dbus-1/system.d/com.ubuntu.LanguageSelector.conf:          <allow receive_interface="com.ubuntu.LanguageSelector"
+/etc/dbus-1/system.d/com.ubuntu.LanguageSelector.conf:                         receive_sender="com.ubuntu.LanguageSelector"/>
+/etc/dbus-1/system.d/com.ubuntu.LanguageSelector.conf:          <allow send_destination="com.ubuntu.LanguageSelector"
+/etc/dbus-1/system.d/com.ubuntu.LanguageSelector.conf:          <allow send_destination="com.ubuntu.LanguageSelector"
+/etc/dbus-1/system.d/com.ubuntu.WhoopsiePreferences.conf:    <allow own="com.ubuntu.WhoopsiePreferences"/>
+/etc/dbus-1/system.d/com.ubuntu.WhoopsiePreferences.conf:    <allow send_destination="com.ubuntu.WhoopsiePreferences" 
+/etc/dbus-1/system.d/com.ubuntu.WhoopsiePreferences.conf:           send_interface="com.ubuntu.WhoopsiePreferences"/>
+/etc/dbus-1/system.d/com.ubuntu.WhoopsiePreferences.conf:    <allow send_destination="com.ubuntu.WhoopsiePreferences" 
+/etc/dbus-1/system.d/com.ubuntu.WhoopsiePreferences.conf:    <allow send_destination="com.ubuntu.WhoopsiePreferences" 
+/etc/dbus-1/system.d/com.ubuntu.SoftwareProperties.conf:    <allow own="com.ubuntu.SoftwareProperties"/>
+/etc/dbus-1/system.d/com.ubuntu.SoftwareProperties.conf:    <allow send_destination="com.ubuntu.SoftwareProperties"
+/etc/dbus-1/system.d/com.ubuntu.SoftwareProperties.conf:           send_interface="com.ubuntu.SoftwareProperties"/>
+/etc/dbus-1/system.d/com.ubuntu.SoftwareProperties.conf:    <allow send_destination="com.ubuntu.SoftwareProperties"
+/etc/dbus-1/system.d/com.ubuntu.SoftwareProperties.conf:    <allow send_destination="com.ubuntu.DeviceDriver"
+/etc/dbus-1/system.d/com.ubuntu.USBCreator.conf:    <allow own="com.ubuntu.USBCreator"/>
+/etc/dbus-1/system.d/com.ubuntu.USBCreator.conf:    <allow send_destination="com.ubuntu.USBCreator" 
+/etc/dbus-1/system.d/com.ubuntu.USBCreator.conf:           send_interface="com.ubuntu.USBCreator"/>
+/etc/dbus-1/system.d/com.ubuntu.USBCreator.conf:    <allow send_destination="com.ubuntu.USBCreator" 
+/etc/dbus-1/system.d/com.ubuntu.USBCreator.conf:    <allow send_destination="com.ubuntu.USBCreator" 
+/etc/rc4.d/S01acpid:        MODULES="$(sed -rn 's#^(/lib/modules/[^/]+/)?kernel/(drivers|ubuntu)/acpi/([^/]+/)*(.*)\.ko:.*#\4#p' "/lib/modules/$(uname -r)/modules.dep")"
+/etc/rc4.d/S01whoopsie:DAEMON=/bin/sh -c 'export CRASH_DB_URL=https://daisy.ubuntu.com; exec whoopsie -f'
+/etc/xdg/autostart/ubuntu-advantage-notification.desktop:Exec=/usr/lib/update-notifier/ubuntu-advantage-notification
+/etc/xdg/autostart/ubuntu-report-on-upgrade.desktop:Exec=/usr/bin/ubuntu-report send upgrade
+/etc/xdg/systemd/user/default.target.wants/ubuntu-report.path:PathExists=%h/.cache/ubuntu-report/pending
+grep: /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg: binary file matches
+grep: /etc/apt/trusted.gpg.d/ubuntu-keyring-2018-archive.gpg: binary file matches
+/etc/apt/sources.list:# See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
+/etc/apt/sources.list:deb http://in.archive.ubuntu.com/ubuntu/ jammy main restricted
+/etc/apt/sources.list:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy main restricted
+/etc/apt/sources.list:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy-updates main restricted
+/etc/apt/sources.list:deb http://in.archive.ubuntu.com/ubuntu/ jammy universe
+/etc/apt/sources.list:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy universe
+/etc/apt/sources.list:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy-updates universe
+/etc/apt/sources.list:deb http://in.archive.ubuntu.com/ubuntu/ jammy multiverse
+/etc/apt/sources.list:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy multiverse
+/etc/apt/sources.list:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy-updates multiverse
+/etc/apt/sources.list:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse
+/etc/apt/sources.list:deb http://security.ubuntu.com/ubuntu jammy-security main restricted
+/etc/apt/sources.list:# deb-src http://security.ubuntu.com/ubuntu jammy-security main restricted
+/etc/apt/sources.list:deb http://security.ubuntu.com/ubuntu jammy-security universe
+/etc/apt/sources.list:# deb-src http://security.ubuntu.com/ubuntu jammy-security universe
+/etc/apt/sources.list:deb http://security.ubuntu.com/ubuntu jammy-security multiverse
+/etc/apt/sources.list:# deb-src http://security.ubuntu.com/ubuntu jammy-security multiverse
+/etc/apt/apt.conf.d/20apt-esm-hook.conf:        "[ ! -f /usr/lib/ubuntu-advantage/apt-esm-json-hook ] || /usr/lib/ubuntu-advantage/apt-esm-json-hook || true";
+/etc/apt/sources.list.save:# See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
+/etc/apt/sources.list.save:deb http://in.archive.ubuntu.com/ubuntu/ jammy main restricted
+/etc/apt/sources.list.save:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy main restricted
+/etc/apt/sources.list.save:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy-updates main restricted
+/etc/apt/sources.list.save:deb http://in.archive.ubuntu.com/ubuntu/ jammy universe
+/etc/apt/sources.list.save:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy universe
+/etc/apt/sources.list.save:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy-updates universe
+/etc/apt/sources.list.save:deb http://in.archive.ubuntu.com/ubuntu/ jammy multiverse
+/etc/apt/sources.list.save:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy multiverse
+/etc/apt/sources.list.save:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy-updates multiverse
+/etc/apt/sources.list.save:# deb-src http://in.archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse
+/etc/apt/sources.list.save:deb http://security.ubuntu.com/ubuntu jammy-security main restricted
+/etc/apt/sources.list.save:# deb-src http://security.ubuntu.com/ubuntu jammy-security main restricted
+/etc/apt/sources.list.save:deb http://security.ubuntu.com/ubuntu jammy-security universe
+/etc/apt/sources.list.save:# deb-src http://security.ubuntu.com/ubuntu jammy-security universe
+/etc/apt/sources.list.save:deb http://security.ubuntu.com/ubuntu jammy-security multiverse
+/etc/apt/sources.list.save:# deb-src http://security.ubuntu.com/ubuntu jammy-security multiverse
+/etc/update-motd.d/91-contract-ua-esm-status:contract_status_stamp="/var/lib/ubuntu-advantage/messages/motd-contract-status"
+/etc/update-motd.d/91-contract-ua-esm-status:auto_attach_stamp="/var/lib/ubuntu-advantage/messages/motd-auto-attach-status"
+/etc/update-motd.d/91-release-upgrade:if [ -x /usr/lib/ubuntu-release-upgrader/release-upgrade-motd ]; then
+/etc/update-motd.d/91-release-upgrade:    exec /usr/lib/ubuntu-release-upgrader/release-upgrade-motd
+/etc/update-motd.d/10-help-text:printf " * Documentation:  https://help.ubuntu.com\n"
+/etc/update-motd.d/10-help-text:printf " * Support:        https://ubuntu.com/advantage\n"
+/etc/update-motd.d/50-motd-news:[ -n "$URLS" ] || URLS="https://motd.ubuntu.com"
+/etc/update-motd.d/50-motd-news:                https://motd.ubuntu.com)
+/etc/logrotate.d/ubuntu-advantage-tools:# of /var/log/ubuntu-advantage*.log files.
+/etc/logrotate.d/ubuntu-advantage-tools:/var/log/ubuntu-advantage*.log {
+/etc/sysctl.d/10-ptrace.conf:# https://wiki.ubuntu.com/SecurityTeam/Roadmap/KernelHardening#ptrace
+grep: /etc/polkit-1/localauthority: Permission denied
+/etc/update-manager/meta-release:URI = https://changelogs.ubuntu.com/meta-release
+/etc/update-manager/meta-release:URI_LTS = https://changelogs.ubuntu.com/meta-release-lts
+/etc/update-manager/release-upgrades.d/ubuntu-advantage-upgrades.cfg:PostInstallScripts=./xorg_fix_proprietary.py, /usr/lib/ubuntu-advantage/upgrade_lts_contract.py
+grep: /etc/sudoers.d/README: Permission denied
+grep: /etc/NetworkManager/system-connections/SEC EEE 5F WIFI.nmconnection: Permission denied
+grep: /etc/NetworkManager/system-connections/realme 11x 5G.nmconnection: Permission denied
+grep: /etc/NetworkManager/system-connections/realme 11x 5G Network.nmconnection: Permission denied
+grep: /etc/NetworkManager/system-connections/Test.nmconnection: Permission denied
+grep: /etc/NetworkManager/system-connections/Unknown .nmconnection: Permission denied
+grep: /etc/ld.so.cache: binary file matches
+grep: /etc/ufw/before.init: Permission denied
+grep: /etc/ufw/before.rules: Permission denied
+grep: /etc/ufw/before6.rules: Permission denied
+grep: /etc/ufw/after.init: Permission denied
+grep: /etc/ufw/user6.rules: Permission denied
+grep: /etc/ufw/after6.rules: Permission denied
+grep: /etc/ufw/after.rules: Permission denied
+grep: /etc/ufw/user.rules: Permission denied
+grep: /etc/shadow: Permission denied
+grep: /etc/pulse/client.conf.d/01-enable-autospawn.conf: No such file or directory
+/etc/depmod.d/ubuntu.conf:search updates ubuntu built-in
+grep: /etc/brlapi.key: Permission denied
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="dma_buf_te", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="galcore", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="mali[0-9]*", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="nvhost-*", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="nvmap", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="pvr_sync", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="renderD[0-9]*", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="tegra_dc_[0-9]*", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="tegra_dc_ctrl", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="vchiq", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="vcsm-cma", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:SUBSYSTEM=="dma_heap", KERNEL=="linux,cma", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:SUBSYSTEM=="dma_heap", KERNEL=="system", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:SUBSYSTEM=="drm", KERNEL=="card[0-9]*", TAG+="snap_snap-store_ubuntu-software"
+/etc/udev/rules.d/70-snap.snap-store.rules:TAG=="snap_snap-store_ubuntu-software", SUBSYSTEM!="module", SUBSYSTEM!="subsystem", RUN+="/usr/lib/snapd/snap-device-helper $env{ACTION} snap_snap-store_ubuntu-software $devpath $major:$minor"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="dma_buf_te", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="galcore", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="mali[0-9]*", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="nvhost-*", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="nvmap", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="pvr_sync", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="renderD[0-9]*", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="tegra_dc_[0-9]*", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="tegra_dc_ctrl", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="vchiq", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:KERNEL=="vcsm-cma", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:SUBSYSTEM=="dma_heap", KERNEL=="linux,cma", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:SUBSYSTEM=="dma_heap", KERNEL=="system", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:SUBSYSTEM=="drm", KERNEL=="card[0-9]*", TAG+="snap_snap-store_ubuntu-software-local-file"
+/etc/udev/rules.d/70-snap.snap-store.rules:TAG=="snap_snap-store_ubuntu-software-local-file", SUBSYSTEM!="module", SUBSYSTEM!="subsystem", RUN+="/usr/lib/snapd/snap-device-helper $env{ACTION} snap_snap-store_ubuntu-software-local-file $devpath $major:$minor"
+/etc/appstream.conf:[ubuntu]
+/etc/appstream.conf:ScreenshotUrl=http://screenshots.ubuntu.com
+/etc/ubuntu-advantage/help_data.yaml:      https://ubuntu.com/security/certifications/docs/usg
+/etc/ubuntu-advantage/help_data.yaml:      https://ubuntu.com/security/esm
+/etc/ubuntu-advantage/help_data.yaml:     the service at https://ubuntu.com/security/esm
+/etc/ubuntu-advantage/help_data.yaml:      https://ubuntu.com/security/certifications#fips
+/etc/ubuntu-advantage/help_data.yaml:      You can find out more at https://ubuntu.com/security/certifications#fips.
+/etc/ubuntu-advantage/help_data.yaml:      https://ubuntu.com/security/livepatch
+/etc/ubuntu-advantage/help_data.yaml:    ROS ESM service at https://ubuntu.com/robotics/ros-esm
+/etc/ubuntu-advantage/help_data.yaml:    https://ubuntu.com/robotics/ros-esm
+/etc/gdm3/config-error-dialog.sh:# Author: Gunnar Hjalmarsson <gunnarhj@ubuntu.com>
+/etc/gnome/defaults.list:application/vnd.debian.binary-package=snap-store_ubuntu-software-local-file.desktop
+/etc/gnome/defaults.list:application/vnd.ms-cab-compressed=snap-store_ubuntu-software-local-file.desktop
+/etc/gnome/defaults.list:application/x-cab=snap-store_ubuntu-software-local-file.desktop
+/etc/gnome/defaults.list:application/x-ms-cab-compressed=snap-store_ubuntu-software-local-file.desktop
+/etc/gnome/defaults.list:application/x-deb=snap-store_ubuntu-software-local-file.desktop
+/etc/gnome/defaults.list:application/x-debian-package=snap-store_ubuntu-software-local-file.desktop
+/etc/gnome/defaults.list:text/x-c++hdr=ubuntusdk.desktop
+/etc/gnome/defaults.list:text/x-c++src=ubuntusdk.desktop
+/etc/gnome/defaults.list:text/x-xsrc=ubuntusdk.desktop
+/etc/gnome/defaults.list:x-scheme-handler/snap=snap-store_ubuntu-software.desktop
+grep: /etc/cups/ssl: Permission denied
+grep: /etc/cups/subscriptions.conf.O: Permission denied
+grep: /etc/cups/printers.conf.O: Permission denied
+grep: /etc/cups/printers.conf: Permission denied
+grep: /etc/cups/subscriptions.conf: Permission denied
+grep: /etc/.pwd.lock: Permission denied
+/etc/os-release:ID=ubuntu
+/etc/os-release:HOME_URL="https://www.ubuntu.com/"
+/etc/os-release:SUPPORT_URL="https://help.ubuntu.com/"
+/etc/os-release:BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+/etc/os-release:PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+/etc/dpkg/origins/ubuntu:Vendor-URL: http://www.ubuntu.com/
+/etc/dpkg/origins/ubuntu:Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+/etc/dpkg/origins/default:Vendor-URL: http://www.ubuntu.com/
+/etc/dpkg/origins/default:Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+/etc/rc5.d/S01acpid:        MODULES="$(sed -rn 's#^(/lib/modules/[^/]+/)?kernel/(drivers|ubuntu)/acpi/([^/]+/)*(.*)\.ko:.*#\4#p' "/lib/modules/$(uname -r)/modules.dep")"
+/etc/rc5.d/S01whoopsie:DAEMON=/bin/sh -c 'export CRASH_DB_URL=https://daisy.ubuntu.com; exec whoopsie -f'
+/etc/systemd/system/timers.target.wants/ua-timer.timer:ConditionPathExists=/var/lib/ubuntu-advantage/private/machine-token.json
+/etc/systemd/system/multi-user.target.wants/ua-reboot-cmds.service:ConditionPathExists=/var/lib/ubuntu-advantage/marker-reboot-cmds-required
+/etc/systemd/system/multi-user.target.wants/ua-reboot-cmds.service:ConditionPathExists=/var/lib/ubuntu-advantage/private/machine-token.json
+/etc/systemd/system/multi-user.target.wants/ua-reboot-cmds.service:ExecStart=/usr/bin/python3 /usr/lib/ubuntu-advantage/reboot_cmds.py
+/etc/systemd/system/multi-user.target.wants/ubuntu-advantage.service:# sudo systemctl stop ubuntu-advantage.service
+/etc/systemd/system/multi-user.target.wants/ubuntu-advantage.service:# sudo systemctl disable ubuntu-advantage.service
+/etc/systemd/system/multi-user.target.wants/ubuntu-advantage.service:Documentation=man:ubuntu-advantage https://ubuntu.com/advantage
+/etc/systemd/system/multi-user.target.wants/ubuntu-advantage.service:After=network.target network-online.target systemd-networkd.service ua-auto-attach.service cloud-config.service ubuntu-advantage-cloud-id-shim.service
+/etc/systemd/system/multi-user.target.wants/ubuntu-advantage.service:ConditionPathExists=!/var/lib/ubuntu-advantage/private/machine-token.json
+/etc/systemd/system/multi-user.target.wants/ubuntu-advantage.service:ConditionPathExists=|/run/ubuntu-advantage/flags/auto-attach-failed
+/etc/systemd/system/multi-user.target.wants/ubuntu-advantage.service:ExecStart=/usr/bin/python3 /usr/lib/ubuntu-advantage/daemon.py
+/etc/systemd/system/multi-user.target.wants/ubuntu-advantage.service:WorkingDirectory=/var/lib/ubuntu-advantage/
+/etc/systemd/user/default.target.wants/ubuntu-report.path:PathExists=%h/.cache/ubuntu-report/pending
+/etc/systemd/timesyncd.conf:#FallbackNTP=ntp.ubuntu.com
+/etc/profile.d/cedilla-portuguese.sh:# Author: Gunnar Hjalmarsson <gunnarhj@ubuntu.com>
+grep: /etc/profile.d/debuginfod.sh: Permission denied
+grep: /etc/profile.d/debuginfod.csh: Permission denied
+grep: /etc/gshadow-: Permission denied
+grep: /etc/alternatives/cpp: binary file matches
+grep: /etc/alternatives/rsh: binary file matches
+grep: /etc/alternatives/rlogin: binary file matches
+grep: /etc/alternatives/shimx64.efi.signed: binary file matches
+/etc/alternatives/open:         LXDE|Lubuntu)
+grep: /etc/alternatives/netcat: binary file matches
+/etc/alternatives/text.plymouth:Description=Text mode theme based on ubuntu-logo theme
+/etc/alternatives/text.plymouth:ModuleName=ubuntu-text
+/etc/alternatives/text.plymouth:[ubuntu-text]
+grep: /etc/alternatives/gdm-theme.gresource: binary file matches
+grep: /etc/alternatives/nc: binary file matches
 
 
 grep -w -n world newfile   
 ## OUTPUT
-
+1:Hello world
+2:hello world
 
 cat < newfile 
 ```
@@ -164,59 +531,68 @@ Linux is best in this World
 egrep -w 'Hello|hello' newfile 
 ## OUTPUT
 
-
+Hello world
+hello world
 
 egrep -w '(H|h)ello' newfile 
 ## OUTPUT
-
-
+Hello world
+hello world
 
 egrep -w '(H|h)ell[a-z]' newfile 
 ## OUTPUT
 
-
+Hello world
+hello world
 
 
 egrep '(^hello)' newfile 
 ## OUTPUT
 
-
+hello world
 
 egrep '(world$)' newfile 
 ## OUTPUT
-
-
+Hello world
+hello world
 
 egrep '(World$)' newfile 
 ## OUTPUT
 
+Linux is best in this World
 
 egrep '((W|w)orld$)' newfile 
 ## OUTPUT
 
-
+Hello world
+hello world
+Linux is best in this World
 
 egrep '[1-9]' newfile 
 ## OUTPUT
 
-
+Linux is world number 1
 
 egrep 'Linux.*world' newfile 
 ## OUTPUT
-
+Linux is world number 1
 
 egrep 'Linux.*World' newfile 
 ## OUTPUT
 
+Linux is best in this World
 
 egrep l{2} newfile
 ## OUTPUT
 
-
+Hello world
+hello world
 
 egrep 's{1,2}' newfile
 ## OUTPUT 
-
+Linux is world number 1
+Unix is predecessor
+Linux is best in this World
 
 cat > file23
 ```
@@ -235,58 +611,97 @@ cat > file23
 sed -n -e '3p' file23
 ## OUTPUT
 
-
+1002 | tom |  5000 | Admin
 
 sed -n -e '$p' file23
 ## OUTPUT
 
-
+001 | Ram | 10000 | HR
 
 sed  -e 's/Ram/Sita/' file23
 ## OUTPUT
-
+1001 | Sita | 10000 | HR
+1001 | Sita | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+1003 | Joe |  7000 | Developer
+1001 | Sita | 10000 | HR
 
 
 sed  -e '2s/Ram/Sita/' file23
 ## OUTPUT
 
-
+1001 | Ram | 10000 | HR
+1001 | Sita | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+1003 | Joe |  7000 | Developer
+1001 | Ram | 10000 | HR
 
 sed  '/tom/s/5000/6000/' file23
 ## OUTPUT
 
-
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom |  6000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+1003 | Joe |  7000 | Developer
+1001 | Ram | 10000 | HR
 
 sed -n -e '1,5p' file23
 ## OUTPUT
-
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
 
 
 sed -n -e '2,/Joe/p' file23
 ## OUTPUT
 
-
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
 
 
 sed -n -e '/tom/,/Joe/p' file23
 ## OUTPUT
-
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
 
 
 seq 10 
 ## OUTPUT
-
-
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
 
 seq 10 | sed -n '4,6p'
 ## OUTPUT
-
-
+4
+5
+6
 
 seq 10 | sed -n '2,~4p'
 ## OUTPUT
 
-
+2
+3
+4
 
 seq 3 | sed '2a hello'
 ## OUTPUT
@@ -295,18 +710,21 @@ seq 3 | sed '2a hello'
 
 seq 2 | sed '2i hello'
 ## OUTPUT
-
+1
+hello
+2
 
 seq 10 | sed '2,9c hello'
 ## OUTPUT
-
+1
+hello
+10
 
 sed -n '2,4{s/^/$/;p}' file23
 ## OUTPUT
-
-
-
-sed -n '2,4{s/$/*/;p}' file23
+$1001 | Ram | 10000 | HR
+$1002 | tom |  5000 | Admin
+$1003 | Joe |  7000 | Developer
 
 
 #Sorting File content
@@ -320,7 +738,11 @@ cat > file21
 ``` 
 sort file21
 ## OUTPUT
-
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1004 | Sit |  7000 | Dev
+1005 | Sam |  5000 | HR
 
 cat > file22
 ```
@@ -333,13 +755,25 @@ cat > file22
 ``` 
 uniq file22
 ## OUTPUT
-
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
 
 
 #Using tr command
 
 cat file23 | tr [:lower:] [:upper:]
  ## OUTPUT
+1001 | RAM | 10000 | HR
+1001 | RAM | 10000 | HR
+1002 | TOM |  5000 | ADMIN
+1003 | JOE |  7000 | DEVELOPER
+1005 | SAM |  5000 | HR
+1004 | SIT |  7000 | DEV
+1003 | JOE |  7000 | DEVELOPER
+1001 | RAM | 10000 | HR
 
 cat < urllist.txt
 ```
@@ -357,17 +791,88 @@ www. mrcet.... com
 cat urllist.txt | tr -d ' '
  ## OUTPUT
 
-
+www.yahoo.com
+www.google.com
+www.mrcet....com
  
 cat urllist.txt | tr -d ' ' | tr -s '.'
 ## OUTPUT
-
-
+www.yahoo.com
+www.google.com
+www.mrcet.com
 
 #Backup commands
 tar -cvf backup.tar *
 ## OUTPUT
-
+tar: backup.tar: file is the archive; not dumped
+casecheck.sh
+elifcheck.sh
+file1
+file11
+file2
+file21
+file22
+file23
+forin.sh
+herecheck.txt
+ifcompound.sh
+ifnested.sh
+iftest.sh
+my-script.sh
+new
+newfile
+OS-Linux-commands-Shell-script/
+OS-Linux-commands-Shell-script/.git/
+OS-Linux-commands-Shell-script/.git/description
+OS-Linux-commands-Shell-script/.git/refs/
+OS-Linux-commands-Shell-script/.git/refs/tags/
+OS-Linux-commands-Shell-script/.git/refs/remotes/
+OS-Linux-commands-Shell-script/.git/refs/remotes/origin/
+OS-Linux-commands-Shell-script/.git/refs/remotes/origin/HEAD
+OS-Linux-commands-Shell-script/.git/refs/heads/
+OS-Linux-commands-Shell-script/.git/refs/heads/main
+OS-Linux-commands-Shell-script/.git/logs/
+OS-Linux-commands-Shell-script/.git/logs/refs/
+OS-Linux-commands-Shell-script/.git/logs/refs/remotes/
+OS-Linux-commands-Shell-script/.git/logs/refs/remotes/origin/
+OS-Linux-commands-Shell-script/.git/logs/refs/remotes/origin/HEAD
+OS-Linux-commands-Shell-script/.git/logs/refs/heads/
+OS-Linux-commands-Shell-script/.git/logs/refs/heads/main
+OS-Linux-commands-Shell-script/.git/logs/HEAD
+OS-Linux-commands-Shell-script/.git/packed-refs
+OS-Linux-commands-Shell-script/.git/info/
+OS-Linux-commands-Shell-script/.git/info/exclude
+OS-Linux-commands-Shell-script/.git/index
+OS-Linux-commands-Shell-script/.git/branches/
+OS-Linux-commands-Shell-script/.git/hooks/
+OS-Linux-commands-Shell-script/.git/hooks/update.sample
+OS-Linux-commands-Shell-script/.git/hooks/fsmonitor-watchman.sample
+OS-Linux-commands-Shell-script/.git/hooks/pre-rebase.sample
+OS-Linux-commands-Shell-script/.git/hooks/applypatch-msg.sample
+OS-Linux-commands-Shell-script/.git/hooks/commit-msg.sample
+OS-Linux-commands-Shell-script/.git/hooks/pre-push.sample
+OS-Linux-commands-Shell-script/.git/hooks/prepare-commit-msg.sample
+OS-Linux-commands-Shell-script/.git/hooks/pre-applypatch.sample
+OS-Linux-commands-Shell-script/.git/hooks/pre-commit.sample
+OS-Linux-commands-Shell-script/.git/hooks/pre-receive.sample
+OS-Linux-commands-Shell-script/.git/hooks/post-update.sample
+OS-Linux-commands-Shell-script/.git/hooks/push-to-checkout.sample
+OS-Linux-commands-Shell-script/.git/hooks/pre-merge-commit.sample
+OS-Linux-commands-Shell-script/.git/HEAD
+OS-Linux-commands-Shell-script/.git/objects/
+OS-Linux-commands-Shell-script/.git/objects/info/
+OS-Linux-commands-Shell-script/.git/objects/pack/
+OS-Linux-commands-Shell-script/.git/objects/pack/pack-8f101c6f34fb29597269050996a0eacbe2dfc4fb.idx
+OS-Linux-commands-Shell-script/.git/objects/pack/pack-8f101c6f34fb29597269050996a0eacbe2dfc4fb.pack
+OS-Linux-commands-Shell-script/.git/config
+OS-Linux-commands-Shell-script/README.md
+OS-Linux-commands-Shell-script/LICENSE
+psswdperm.sh
+scriptest.sh
+strcomp.sh
+untiltest.sh
+urllist.txt
+whiletest
 
 mkdir backupdir
  
